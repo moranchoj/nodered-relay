@@ -1,1 +1,99 @@
-[ { "id": "relay1-switch", "type": "ui_switch", "z": "main", "name": "Relay 1", "label": "RELAY1 (Venus OS)", "group": "dashboard-group", "order": 1, "width": 3, "height": 1, "passthru": true, "topic": "", "style": "", "onvalue": 1, "onvalueType": "num", "offvalue": 0, "offvalueType": "num", "x": 150, "y": 100, "wires": [["victron-relay1-output"]] }, { "id": "victron-relay1-output", "type": "victron-output-relay", "z": "main", "name": "Relay 1 (Victron Venus Output)", "service": "com.victronenergy.system", "path": "/Relay/0/State", "relay": 1, "measurement": "venus relay 1 state", "x": 370, "y": 100, "wires": [] }, { "id": "victron-relay1-input", "type": "victron-input-relay", "z": "main", "name": "Estat Relay 1 (Victron Venus Input)", "service": "com.victronenergy.system", "path": "/Relay/0/State", "relay": 1, "measurement": "venus relay 1 state", "x": 170, "y": 180, "wires": [["relay1-led"]] }, { "id": "relay1-led", "type": "ui_led", "z": "main", "order": 2, "group": "dashboard-group", "width": 1, "height": 1, "label": "Estat RELAY1", "labelPlacement": "left", "labelAlignment": "left", "colorForValue": [ { "color": "#00FF00", "value": 1, "valueType": "num" }, { "color": "#FF0000", "value": 0, "valueType": "num" } ], "allowColorForValueInMessage": false, "shape": "circle", "x": 380, "y": 180, "wires": [] }, { "id": "dashboard-group", "type": "ui_group", "name": "Relays", "tab": "dashboard-tab", "order": 1, "disp": true, "width": "6" }, { "id": "dashboard-tab", "type": "ui_tab", "name": "Relay Control", "icon": "dashboard", "order": 1 } ]
+[
+  {
+    "id": "relay1-switch",
+    "type": "ui_switch",
+    "z": "main",
+    "name": "RELAY1 (Venus OS)",
+    "label": "RELAY1 (Venus OS)",
+    "group": "dashboard-group",
+    "order": 1,
+    "width": 3,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "style": "",
+    "onvalue": 1,
+    "onvalueType": "num",
+    "offvalue": 0,
+    "offvalueType": "num",
+    "x": 150,
+    "y": 100,
+    "wires": [
+      [
+        "relay1-output"
+      ]
+    ]
+  },
+  {
+    "id": "relay1-output",
+    "type": "victron-output",
+    "z": "main",
+    "name": "Relay 1 State",
+    "service": "com.victronenergy.system",
+    "path": "/Relay/0/State",
+    "initial": "",
+    "x": 380,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "victron-relay1-input",
+    "type": "victron-input",
+    "z": "main",
+    "name": "Estat Relay 1 (input)",
+    "service": "com.victronenergy.system",
+    "path": "/Relay/0/State",
+    "x": 170,
+    "y": 180,
+    "wires": [
+      [
+        "relay1-led"
+      ]
+    ]
+  },
+  {
+    "id": "relay1-led",
+    "type": "ui_led",
+    "z": "main",
+    "order": 2,
+    "group": "dashboard-group",
+    "width": 1,
+    "height": 1,
+    "label": "Estat RELAY1",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#00FF00",
+        "value": 1,
+        "valueType": "num"
+      },
+      {
+        "color": "#FF0000",
+        "value": 0,
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "x": 380,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "dashboard-group",
+    "type": "ui_group",
+    "name": "Relays",
+    "tab": "dashboard-tab",
+    "order": 1,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "dashboard-tab",
+    "type": "ui_tab",
+    "name": "Relay Control",
+    "icon": "dashboard",
+    "order": 1
+  }
+]
